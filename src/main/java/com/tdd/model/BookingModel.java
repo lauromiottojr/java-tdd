@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class BookingModel {
 
-	private String id;
+	private Integer id;
 	private String reserveName;
 	private LocalDate checkIn;
 	private LocalDate checkOut;
 	private Integer numberGuests;
 
-	public BookingModel(String id, String reserveName, LocalDate checkIn, LocalDate checkOut, Integer numberGuests) {
+	public BookingModel(Integer id, String reserveName, LocalDate checkIn, LocalDate checkOut, Integer numberGuests) {
 		super();
 		this.id = id;
 		this.reserveName = reserveName;
@@ -19,11 +19,11 @@ public class BookingModel {
 		this.numberGuests = numberGuests;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
