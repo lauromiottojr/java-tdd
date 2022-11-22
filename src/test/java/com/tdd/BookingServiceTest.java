@@ -42,12 +42,12 @@ public class BookingServiceTest {
 		String name = "Lauro";
 		Integer days = bookingService.daysCalculatorWithDB(name);
 
-		Assertions.assertEquals(days, 10);
+		Assertions.assertEquals(days, 10); // o valor deve ser a diferença entre o checkIn e checkOut
 	}
 
 	@Before
 	public void setup() {
-		LocalDate checkIn = LocalDate.parse("2022-11-22");
+		LocalDate checkIn = LocalDate.parse("2022-11-20");
 		LocalDate checkOut = LocalDate.parse("2022-11-30");
 
 		BookingModel bookingModel = new BookingModel(1, "Lauro", checkIn, checkOut, 2);
