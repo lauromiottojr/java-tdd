@@ -1,5 +1,6 @@
 package com.tdd;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +29,11 @@ public class BookingControllerTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 
+	LocalDate checkIn = LocalDate.parse("2022-11-20");
+	LocalDate checkOut = LocalDate.parse("2022-11-30");
+
+	BookingModel bookingModel = new BookingModel(1, "Lauro", checkIn, checkOut, 2);
+
 	@Test
 	public void bookingTestGetAll() throws Exception {
 		mockMvc.perform(get("/bookings")).andExpect(status().isOk());
@@ -35,13 +41,18 @@ public class BookingControllerTest {
 
 	@Test
 	public void bookingTestSave() throws Exception {
-		LocalDate checkIn = LocalDate.parse("2022-11-20");
-		LocalDate checkOut = LocalDate.parse("2022-11-30");
-
-		BookingModel bookingModel = new BookingModel(1, "Lauro", checkIn, checkOut, 2);
-
 		mockMvc.perform(post("/bookings").contentType("application/json")
 				.content(objectMapper.writeValueAsString(bookingModel))).andExpect(status().isOk());
+	}
+
+	@Test
+	public void bookingTestDelete() throws Exception {
+		mockMvc.perform(delete("/bookings")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void bookingTestPut() throws Exception {
+		mockMvc.perform(delete("/bookings")).andExpect(status().isOk());
 	}
 
 }
